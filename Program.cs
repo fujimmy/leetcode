@@ -13,7 +13,7 @@ namespace leetcode
             Console.WriteLine($"Reuslt={string.Join(", ", result)}");*/
 
             //add two nums
-            ListNode l1 = new ListNode(2);
+           /*  ListNode l1 = new ListNode(2);
             l1.next = new ListNode(4);
             l1.next.next = new ListNode(3);
 
@@ -28,8 +28,12 @@ namespace leetcode
                 if (result.next != null)
                     Console.Write(" -> ");
                 result = result.next;
-            }
+            } */
             
+            //LengthOfLongest
+           /*  string s = "pwwkew";
+            int result = LengthOfLongest.LengthOfLongestSubstring(s);
+            Console.WriteLine($"Reuslt={result}"); */
         }
     }
 }

@@ -1,0 +1,50 @@
+using NUnit.Framework;
+
+namespace leetcode
+{
+    [TestFixture] // 表示這是一個測試類別
+    public class Tests
+    {
+        [Test] // 表示這是一個測試方法
+        public void TestTwoSum()
+        {
+            int[] ex1 = { 2, 7, 11, 15 };
+            var result = TwoSum.twosum(ex1, 9);
+            Assert.AreEqual(new int[] { 0, 1 }, result);
+        }
+
+        [Test]
+        public void TestAddTwoNumbers()
+        {
+            ListNode l1 = new ListNode(2);
+            l1.next = new ListNode(4);
+            l1.next.next = new ListNode(3);
+
+            ListNode l2 = new ListNode(5);
+            l2.next = new ListNode(6);
+            l2.next.next = new ListNode(4);
+
+            var result = Addtwonums.addTwoNumbers(l1, l2);
+            var expected = new ListNode(7);
+            expected.next = new ListNode(0);
+            expected.next.next = new ListNode(8);
+
+            while (result != null && expected != null)
+            {
+                Assert.AreEqual(result.val, expected.val);
+                result = result.next;
+                expected = expected.next;
+            }
+        }
+
+        [Test]
+        public void TestLengthOfLongestSubstring()
+        {
+            string s = "pwwkew";
+            var result = LengthOfLongest.LengthOfLongestSubstring(s);
+            Assert.AreEqual(3, result);
+        }
+    }
+}
+//dotnet test
+
