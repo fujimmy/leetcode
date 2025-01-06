@@ -44,6 +44,21 @@ namespace leetcode
             var result = LengthOfLongest.LengthOfLongestSubstring(s);
             Assert.AreEqual(3, result);
         }
+
+        [Test]
+        public void TestFindMedianSortedArrays()
+        {
+            int[] nums1 = { 1, 3 };
+            int[] nums2 = { 2 };
+            var result = findMedianSortedArrays.FindMedianSortedArrays(nums1, nums2);
+            Assert.AreEqual(2.0, result);
+
+            int[] nums3 = { 1, 2 };
+            int[] nums4 = { 3, 4 };
+            var result2 = findMedianSortedArrays.FindMedianSortedArrays(nums3, nums4);
+            Assert.AreEqual(2.5, result2);
+
+        }
     }
 }
 //dotnet test
