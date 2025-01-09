@@ -59,6 +59,19 @@ namespace leetcode
             Assert.AreEqual(2.5, result2);
 
         }
+
+        [Test]
+        public void TestLongestPalindromic()
+        {
+            string s = "babad";
+            var result = Longest_palindromic.longest_palindromic(s);
+            Assert.AreEqual(3, result);
+
+            string s2 = "cbbd";
+            var result2 = Longest_palindromic.longest_palindromic(s2);
+            Assert.AreEqual(2, result2);
+
+        }
     }
 }
 //dotnet test
