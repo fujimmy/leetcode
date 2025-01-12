@@ -72,6 +72,18 @@ namespace leetcode
             Assert.AreEqual(2, result2);
 
         }
+
+        [Test]
+        public void TestConvert()
+        {
+            string s = "PAYPALISHIRING";
+            var result = Zigzag.Convert(s, 3);
+            Assert.AreEqual("PAHNAPLSIIGYIR", result);
+
+            string s2 = "PAYPALISHIRING";
+            var result2 = Zigzag.Convert(s2, 4);
+            Assert.AreEqual("PINALSIGYAHRPI", result2);
+        }
     }
 }
 //dotnet test
