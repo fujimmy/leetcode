@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
 namespace leetcode
 {
     public static class Zigzag
@@ -10,28 +13,36 @@ namespace leetcode
         /// <returns></returns>
         public static string Convert(string s, int numRows)
         {
-            if (numRows == 1)   
-            {
+            if (numRows == 1 || s.Length <= numRows)
                 return s;
-            }
-            string[] rows = new string[numRows];        
-            int currentRow = 0; 
-            bool goingDown = false;
+
+            // 初始化行的列表
+            List<StringBuilder> rows = new List<StringBuilder>();
+            for (int i = 0; i < Math.Min(numRows, s.Length); i++)
+                rows.Add(new StringBuilder());
+
+            int currentRow = 0; // 當前行
+            bool goingDown = false; // 初始方向
+
+            // 遍歷字串中的每個字元
             foreach (char c in s)
-            {                
-                rows[currentRow] += c; //將字元加入對應的row
-                if (currentRow == 0 || currentRow == numRows - 1)   //到頂或底時改變方向   
-                {
-                    goingDown = !goingDown; //改變方向 
-                }
-                currentRow += goingDown ? 1 : -1; //往下或往上
-            }
-            string result = "";
-            foreach (string row in rows)
             {
-                result += row;
+                rows[currentRow].Append(c);
+
+                // 改變方向的條件
+                if (currentRow == 0 || currentRow == numRows - 1)
+                    goingDown = !goingDown;
+
+                // 根據方向改變行數
+                currentRow += goingDown ? 1 : -1;
             }
-            return result;
+
+            // 將所有行合併成結果字串
+            StringBuilder result = new StringBuilder();
+            foreach (var row in rows)
+                result.Append(row);
+
+            return result.ToString();
         }
     }
 }

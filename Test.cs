@@ -84,6 +84,30 @@ namespace leetcode
             var result2 = Zigzag.Convert(s2, 4);
             Assert.AreEqual("PINALSIGYAHRPI", result2);
         }
+
+        [Test]
+        public void TestReverse()
+        {
+            int x = 123;
+            var result = ReverseInteger.reverse(x);
+            Assert.AreEqual(321, result);
+
+            int x2 = -123;
+            var result2 = ReverseInteger.reverse(x2);
+            Assert.AreEqual(-321, result2);
+
+            int x3 = 120;
+            var result3 = ReverseInteger.reverse(x3);
+            Assert.AreEqual(21, result3);
+
+            int x4 = 0;
+            var result4 = ReverseInteger.reverse(x4);
+            Assert.AreEqual(0, result4);
+
+            int x5 = 1534236469;
+            var result5 = ReverseInteger.reverse(x5);
+            Assert.AreEqual(0, result5);
+        }
     }
 }
 //dotnet test
