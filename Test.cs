@@ -108,6 +108,30 @@ namespace leetcode
             var result5 = ReverseInteger.reverse(x5);
             Assert.AreEqual(0, result5);
         }
+
+        [Test]
+        public void TestMyAtoi()
+        {
+            string s = "42";
+            var result = Stringtoint.stringtoint(s);
+            Assert.AreEqual(42, result);
+
+            string s2 = "   -42";
+            var result2 = Stringtoint.stringtoint(s2);
+            Assert.AreEqual(-42, result2);
+
+            string s3 = "4193 with words";
+            var result3 = Stringtoint.stringtoint(s3);
+            Assert.AreEqual(4193, result3);
+
+            string s4 = "words and 987";
+            var result4 = Stringtoint.stringtoint(s4);
+            Assert.AreEqual(0, result4);
+
+            string s5 = "-91283472332";
+            var result5 = Stringtoint.stringtoint(s5);
+            Assert.AreEqual(-2147483648, result5);
+        }
     }
 }
 //dotnet test
