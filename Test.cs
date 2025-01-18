@@ -132,6 +132,51 @@ namespace leetcode
             var result5 = Stringtoint.stringtoint(s5);
             Assert.AreEqual(-2147483648, result5);
         }
+
+        [Test]
+        public void TestIsPalindrome()
+        {
+            int x = 121;
+            var result = Palindrome.IsPalindrome(x);
+            Assert.AreEqual(true, result);
+
+            int x2 = -121;
+            var result2 = Palindrome.IsPalindrome(x2);
+            Assert.AreEqual(false, result2);
+
+            int x3 = 10;
+            var result3 = Palindrome.IsPalindrome(x3);
+            Assert.AreEqual(false, result3);
+        }
+
+        [Test]
+        public void TestIsMatch()
+        {
+            string s = "aa";
+            string p = "a";
+            var result = Regularexpression.IsMatch(s, p);
+            Assert.AreEqual(false, result);
+
+            string s2 = "aa";
+            string p2 = "a*";
+            var result2 = Regularexpression.IsMatch(s2, p2);
+            Assert.AreEqual(true, result2);
+
+            string s3 = "ab";
+            string p3 = ".*";
+            var result3 = Regularexpression.IsMatch(s3, p3);
+            Assert.AreEqual(true, result3);
+
+            string s4 = "aab";
+            string p4 = "c*a*b";
+            var result4 = Regularexpression.IsMatch(s4, p4);
+            Assert.AreEqual(true, result4);
+
+            string s5 = "mississippi";
+            string p5 = "mis*is*p*.";
+            var result5 = Regularexpression.IsMatch(s5, p5);
+            Assert.AreEqual(false, result5);
+        }
     }
 }
 //dotnet test
