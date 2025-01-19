@@ -177,6 +177,38 @@ namespace leetcode
             var result5 = Regularexpression.IsMatch(s5, p5);
             Assert.AreEqual(false, result5);
         }
+
+        [Test]
+        public void TestMaxArea()
+        {
+            int[] height = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+            var result = MostWater.MaxArea(height);
+            Assert.AreEqual(49, result);
+        }
+
+        [Test]
+        public void TestIntToRoman()
+        {
+            int num = 3;
+            var result = IntegerToRoman.IntToRoman(num);
+            Assert.AreEqual("III", result);
+
+            int num2 = 4;
+            var result2 = IntegerToRoman.IntToRoman(num2);
+            Assert.AreEqual("IV", result2);
+
+            int num3 = 9;
+            var result3 = IntegerToRoman.IntToRoman(num3);
+            Assert.AreEqual("IX", result3);
+
+            int num4 = 58;
+            var result4 = IntegerToRoman.IntToRoman(num4);
+            Assert.AreEqual("LVIII", result4);
+
+            int num5 = 1994;
+            var result5 = IntegerToRoman.IntToRoman(num5);
+            Assert.AreEqual("MCMXCIV", result5);
+        }
     }
 }
 //dotnet test
