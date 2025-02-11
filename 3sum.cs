@@ -47,7 +47,7 @@ namespace leetcode
             return result;
         }
          // **快速排序 (QuickSort)**
-        static void QuickSort(int[] arr, int left, int right)
+        public static void QuickSort(int[] arr, int left, int right)
         {
             if (left >= right) return;
 

@@ -226,6 +226,18 @@ namespace leetcode
             Assert.AreEqual(1, result3.Count);
          
         }
+
+        [Test]
+        public void TestThreeSumClosest()
+        {
+            int[] nums = { -1, 2, 1, -4 };
+            var result = threeSumClosest.ThreeSumClosest(nums, 1);
+            Assert.AreEqual(2, result);
+
+            int[] nums2 = { 1, 1, 1, 0 };
+            var result2 = threeSumClosest.ThreeSumClosest(nums2, -100);
+            Assert.AreEqual(2, result2);
+        }
     }
 }
 //dotnet test
