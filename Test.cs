@@ -209,6 +209,23 @@ namespace leetcode
             var result5 = IntegerToRoman.IntToRoman(num5);
             Assert.AreEqual("MCMXCIV", result5);
         }
+
+        [Test]
+        public void TestThreeSum()
+        {
+            int[] nums = { -1, 0, 1, 2, -1, -4 };
+            var result = ThreeSum.threeSum(nums);
+            Assert.AreEqual(2, result.Count);
+
+            int[] nums2 = {0,1,1 };
+            var result2 = ThreeSum.threeSum(nums2);
+            Assert.AreEqual(0, result2.Count);
+
+            int[] nums3 = { 0, 0, 0 };
+            var result3 = ThreeSum.threeSum(nums3);
+            Assert.AreEqual(1, result3.Count);
+         
+        }
     }
 }
 //dotnet test
