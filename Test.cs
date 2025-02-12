@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace leetcode
@@ -237,6 +238,23 @@ namespace leetcode
             int[] nums2 = { 1, 1, 1, 0 };
             var result2 = threeSumClosest.ThreeSumClosest(nums2, -100);
             Assert.AreEqual(2, result2);
+        }
+
+        [Test]
+        public void TestLetterCombinations()
+        {
+            string digits = "23";
+            var result = letterCombinations.LetterCombinations(digits);
+            IList<string> expected = new List<string> { "ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf" };
+            CollectionAssert.AreEqual(expected, result);
+
+            string digits2 = "";
+            var result2 = letterCombinations.LetterCombinations(digits2);
+            CollectionAssert.AreEqual(new List<string>(), result2);
+
+            string digits3 = "2";
+            var result3 = letterCombinations.LetterCombinations(digits3);            
+            CollectionAssert.AreEqual(new List<string> { "a", "b", "c" }, result3);          
         }
     }
 }

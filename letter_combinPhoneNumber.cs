@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace leetcode
 {
-    public static class Solution
+    public static class letterCombinations
     {
         private static readonly string[] mapping = new string[] {
         "",    // 0
@@ -31,12 +31,16 @@ namespace leetcode
 
         private static void LetterCombinationsRecursive(List<string> result, string digits, string current, int index)
         {
+            // 當 index 等於 digits 長度時，表示已經找到一個組合
             if (index == digits.Length)
             {
                 result.Add(current);
                 return;
             }
-            string letters = mapping[digits[index] - '0'];
+            //字符 '0' 的 ASCII 碼是 48
+            //'2' - '0' = 50 - 48 = 2
+            //速度會比conver to int快
+            string letters = mapping[digits[index] - '0']; // 取得數字對應的字母 
             foreach (char letter in letters)
             {
                 LetterCombinationsRecursive(result, digits, current + letter, index + 1);
