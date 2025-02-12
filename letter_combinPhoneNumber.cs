@@ -5,45 +5,58 @@ namespace leetcode
 {
     public static class letterCombinations
     {
-        private static readonly string[] mapping = new string[] {
-        "",    // 0
-        "",    // 1
-        "abc", // 2
-        "def", // 3
-        "ghi", // 4
-        "jkl", // 5
-        "mno", // 6
-        "pqrs",// 7
-        "tuv", // 8
-        "wxyz" // 9
-    };
-
-        public static IList<string> LetterCombinations(string digits)
+        public static string[] LetterCombinations(string digits)
         {
-            List<string> result = new List<string>();
-            if (string.IsNullOrEmpty(digits))
+            if (digits == null || digits.Length == 0)
+                return [];
+
+            // **手動建立數字對應字母的對照表**
+            char[][] phoneMap =
+            [
+            [], [],  // 0 和 1 沒有對應
+            ['a', 'b', 'c'],   // 2
+            ['d', 'e', 'f'],   // 3
+            ['g', 'h', 'i'],   // 4
+            ['j', 'k', 'l'],   // 5
+            ['m', 'n', 'o'],   // 6
+            ['p', 'q', 'r', 's'], // 7
+            ['t', 'u', 'v'],   // 8
+            ['w', 'x', 'y', 'z']  // 9
+            ];
+
+            // **計算可能組合的數量**
+            int totalCombinations = 1;
+            for (int i = 0; i < digits.Length; i++)
             {
-                return result;
+                int num = digits[i] - '0';
+                totalCombinations *= phoneMap[num].Length;
             }
-            LetterCombinationsRecursive(result, digits, "", 0);
+
+            // **手動建立儲存結果的陣列**
+            string[] result = new string[totalCombinations];
+            char[] path = new char[digits.Length];  // 路徑存放目前組合
+
+            // **手寫遞迴函式**
+            int index = 0;
+            GenerateCombinations(result, ref index, phoneMap, digits, 0, path);
             return result;
         }
 
-        private static void LetterCombinationsRecursive(List<string> result, string digits, string current, int index)
+        private static void GenerateCombinations(string[] result, ref int index, char[][] phoneMap,string digits, int depth, char[] path)
         {
-            // 當 index 等於 digits 長度時，表示已經找到一個組合
-            if (index == digits.Length)
+            if (depth == digits.Length)
             {
-                result.Add(current);
+                // **手動存入陣列**
+                result[index] = new string(path);
+                index++;
                 return;
             }
-            //字符 '0' 的 ASCII 碼是 48
-            //'2' - '0' = 50 - 48 = 2
-            //速度會比conver to int快
-            string letters = mapping[digits[index] - '0']; // 取得數字對應的字母 
-            foreach (char letter in letters)
+
+            int digit = digits[depth] - '0';
+            for (int i = 0; i < phoneMap[digit].Length; i++)
             {
-                LetterCombinationsRecursive(result, digits, current + letter, index + 1);
+                path[depth] = phoneMap[digit][i];  // 設置當前層的字母
+                GenerateCombinations(result, ref index, phoneMap, digits, depth + 1, path);
             }
         }
     }
