@@ -52,7 +52,10 @@ namespace leetcode
                 return;
             }
 
-            int digit = digits[depth] - '0';
+            //字符 '0' 的 ASCII 碼是 48
+            //從字符 '0' 中減去 '0' 的 ASCII 碼（即 48），得到了對應的整數值
+            //例如 '2' - '0' = 50 - 48 = 2
+            int digit = digits[depth] - '0';// 取得當前數字
             for (int i = 0; i < phoneMap[digit].Length; i++)
             {
                 path[depth] = phoneMap[digit][i];  // 設置當前層的字母
