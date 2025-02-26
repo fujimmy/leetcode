@@ -1,12 +1,35 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using NUnit.Framework;
 
 namespace leetcode
 {
-    [TestFixture] // 表示這是一個測試類別
+    [TestFixture] // 一個測試類別
     public class Tests
     {
-        [Test] // 表示這是一個測試方法
+        private Stopwatch stopwatch;
+
+        /// <summary>
+        /// 測試方法起始時間
+        /// </summary>
+        [SetUp]
+        public void Setup()
+        {
+            stopwatch = Stopwatch.StartNew();
+            TestContext.WriteLine($"Test {TestContext.CurrentContext.Test.Name} started.");
+        }
+
+        /// <summary>
+        /// 測試方法結束時間
+        /// </summary>
+        [TearDown]
+        public void Teardown()
+        {
+            stopwatch.Stop();
+            TestContext.WriteLine($"Test {TestContext.CurrentContext.Test.Name} finished in {stopwatch.ElapsedMilliseconds} ms.");
+        }
+
+        [Test] // 一個測試方法
         public void TestTwoSum()
         {
             int[] ex1 = { 2, 7, 11, 15 };
@@ -218,14 +241,14 @@ namespace leetcode
             var result = ThreeSum.threeSum(nums);
             Assert.AreEqual(2, result.Count);
 
-            int[] nums2 = {0,1,1 };
+            int[] nums2 = { 0, 1, 1 };
             var result2 = ThreeSum.threeSum(nums2);
             Assert.AreEqual(0, result2.Count);
 
             int[] nums3 = { 0, 0, 0 };
             var result3 = ThreeSum.threeSum(nums3);
             Assert.AreEqual(1, result3.Count);
-         
+
         }
 
         [Test]
@@ -253,8 +276,27 @@ namespace leetcode
             CollectionAssert.AreEqual(new List<string>(), result2);
 
             string digits3 = "2";
-            var result3 = letterCombinations.LetterCombinations(digits3);            
-            CollectionAssert.AreEqual(new List<string> { "a", "b", "c" }, result3);          
+            var result3 = letterCombinations.LetterCombinations(digits3);
+            CollectionAssert.AreEqual(new List<string> { "a", "b", "c" }, result3);
+        }
+
+        [Test]
+        public void TestFourSum()
+        {
+            int[] nums = { 1, 0, -1, 0, -2, 2 };
+            var result = FourSum.fourSum(nums, 0);
+            var expected = new List<IList<int>> { new List<int> { -2, -1, 1, 2 }, new List<int> { -2, 0, 0, 2 }, new List<int> { -1, 0, 0, 1 } };
+            CollectionAssert.AreEqual(expected, result);
+
+            int[] nums2 = { 2, 2, 2, 2, 2 };
+            var result2 = FourSum.fourSum(nums2, 8);
+            var expected2 = new List<IList<int>> { new List<int> { 2, 2, 2, 2 } };
+            CollectionAssert.AreEqual(expected2, result2);
+
+            int[] nums3 = { 1000000000, 1000000000, 1000000000, 1000000000 };
+            var result3 = FourSum.fourSum(nums3, -294967296);
+            var expected3 = new List<IList<int>> { };
+            CollectionAssert.AreEqual(expected3, result3);
         }
     }
 }
