@@ -29,7 +29,7 @@ namespace leetcode
             TestContext.WriteLine($"Test {TestContext.CurrentContext.Test.Name} finished in {stopwatch.ElapsedMilliseconds} ms.");
         }
 
-        [Test] // 一個測試方法
+        [Test]
         public void TestTwoSum()
         {
             int[] ex1 = { 2, 7, 11, 15 };
@@ -297,6 +297,45 @@ namespace leetcode
             var result3 = FourSum.fourSum(nums3, -294967296);
             var expected3 = new List<IList<int>> { };
             CollectionAssert.AreEqual(expected3, result3);
+        }
+
+        [Test]
+        public void TestRemoveNthFromEnd()
+        {
+            ListNode head = new ListNode(1);
+            head.next = new ListNode(2);
+            head.next.next = new ListNode(3);
+            head.next.next.next = new ListNode(4);
+            head.next.next.next.next = new ListNode(5);
+
+            var result = RemoveNthNode.removeNthFromEnd(head, 2);
+            var expected = new ListNode(1);
+            expected.next = new ListNode(2);
+            expected.next.next = new ListNode(3);
+            expected.next.next.next = new ListNode(5);
+
+            while (result != null && expected != null)
+            {
+                Assert.AreEqual(result.val, expected.val);
+                result = result.next;
+                expected = expected.next;
+            }
+
+            ListNode head2 = new ListNode(1);
+            var result2 = RemoveNthNode.removeNthFromEnd(head2, 1);
+            Assert.AreEqual(null, result2);
+
+            ListNode head3 = new ListNode(1);
+            head3.next = new ListNode(2);
+            var result3 = RemoveNthNode.removeNthFromEnd(head3, 1);
+            var expected3 = new ListNode(1);
+            Assert.AreEqual(expected3.val, result3.val);
+
+            ListNode head4 = new ListNode(1);
+            head4.next = new ListNode(2);
+            var result4 = RemoveNthNode.removeNthFromEnd(head4, 2);
+            var expected4 = new ListNode(2);
+            Assert.AreEqual(expected4.val, result4.val);
         }
     }
 }
