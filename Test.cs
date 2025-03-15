@@ -361,7 +361,49 @@ namespace leetcode
             var result5 = validParentheses.IsValidParentheses(s5);
             Assert.AreEqual(true, result5);
         }
+
+        [Test]
+        public void TestMergeTwoLists()
+        {
+            ListNode l1 = new ListNode(1);
+            l1.next = new ListNode(2);
+            l1.next.next = new ListNode(4);
+
+            ListNode l2 = new ListNode(1);
+            l2.next = new ListNode(3);
+            l2.next.next = new ListNode(4);
+
+            var result = mergeTwoListNode.MergeTwoLists(l1, l2);
+            var expected = new ListNode(1);
+            expected.next = new ListNode(1);
+            expected.next.next = new ListNode(2);
+            expected.next.next.next = new ListNode(3);
+            expected.next.next.next.next = new ListNode(4);
+            expected.next.next.next.next.next = new ListNode(4);
+
+            while (result != null && expected != null)
+            {
+                Assert.AreEqual(result.val, expected.val);
+                result = result.next;
+                expected = expected.next;
+            }
+
+            ListNode l3 = new ListNode(1);
+            ListNode l4 = new ListNode(2);
+            var result2 = mergeTwoListNode.MergeTwoLists(l3, l4);
+            var expected2 = new ListNode(1);
+            expected2.next = new ListNode(2);
+            while (result2 != null && expected2 != null)
+            {
+                Assert.AreEqual(result2.val, expected2.val);
+                result2 = result2.next;
+                expected2 = expected2.next;
+            }
+
+        }
     }
+
+
 }
 //dotnet test
 
