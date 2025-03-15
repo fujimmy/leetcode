@@ -337,6 +337,30 @@ namespace leetcode
             var expected4 = new ListNode(2);
             Assert.AreEqual(expected4.val, result4.val);
         }
+
+        [Test]
+        public void TestIsValidParentheses()
+        {
+            string s = "()";
+            var result = validParentheses.IsValidParentheses(s);
+            Assert.AreEqual(true, result);
+
+            string s2 = "()[]{}";
+            var result2 = validParentheses.IsValidParentheses(s2);
+            Assert.AreEqual(true, result2);
+
+            string s3 = "(]";
+            var result3 = validParentheses.IsValidParentheses(s3);
+            Assert.AreEqual(false, result3);
+
+            string s4 = "([)]";
+            var result4 = validParentheses.IsValidParentheses(s4);
+            Assert.AreEqual(false, result4);
+
+            string s5 = "{[]}";
+            var result5 = validParentheses.IsValidParentheses(s5);
+            Assert.AreEqual(true, result5);
+        }
     }
 }
 //dotnet test
