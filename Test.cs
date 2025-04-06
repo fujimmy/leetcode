@@ -401,6 +401,20 @@ namespace leetcode
             }
 
         }
+
+        [Test]
+        public void TestGenerateParenthesis()
+        {
+            int n = 3;
+            var result = generateParenthesis.GenerateParenthesis(n);
+            var expected = new List<string> { "((()))", "(()())", "(())()", "()(())", "()()()" };
+            CollectionAssert.AreEqual(expected, result);
+
+            int n2 = 1;
+            var result2 = generateParenthesis.GenerateParenthesis(n2);
+            var expected2 = new List<string> { "()" };
+            CollectionAssert.AreEqual(expected2, result2);
+        }
     }
 
 
