@@ -415,6 +415,47 @@ namespace leetcode
             var expected2 = new List<string> { "()" };
             CollectionAssert.AreEqual(expected2, result2);
         }
+
+        [Test]
+        public void MergeKLists()
+        {
+            //[[1,4,5],[1,3,4],[2,6]]
+           
+            ListNode l1 = new ListNode(1);
+
+            l1.next = new ListNode(4);
+            l1.next.next = new ListNode(5);
+
+            ListNode l2 = new ListNode(1);
+            l2.next = new ListNode(3);
+            l2.next.next = new ListNode(4);
+
+            ListNode l3 = new ListNode(2);
+            l3.next = new ListNode(6);
+            l3.next.next = null;
+            var lists = new List<ListNode> { l1, l2, l3 };            
+            var result = mergeKLists.MergeKLists(lists.ToArray());
+
+            var expected = new ListNode(1);
+            expected.next = new ListNode(1);
+            expected.next.next = new ListNode(2);
+            expected.next.next.next = new ListNode(3);
+            expected.next.next.next.next = new ListNode(4);
+            expected.next.next.next.next.next = new ListNode(4);
+            expected.next.next.next.next.next.next = new ListNode(5);
+            expected.next.next.next.next.next.next.next = new ListNode(6);
+
+            while (result != null && expected != null)
+            {
+                Assert.AreEqual(result.val, expected.val);
+                result = result.next;
+                expected = expected.next;
+            }
+
+           
+            
+        }
+
     }
 
 
