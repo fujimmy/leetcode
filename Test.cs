@@ -451,10 +451,41 @@ namespace leetcode
                 result = result.next;
                 expected = expected.next;
             }
-
-           
-            
         }
+
+        [Test]
+        public void TestSwapPairs()
+        {
+            ListNode head = new ListNode(1);
+            head.next = new ListNode(2);
+            head.next.next = new ListNode(3);
+            head.next.next.next = new ListNode(4);
+
+            var result = swap_nodes_in_pairs.SwapPairs(head);
+            var expected = new ListNode(2);
+            expected.next = new ListNode(1);
+            expected.next.next = new ListNode(4);
+            expected.next.next.next = new ListNode(3);
+
+            while (result != null && expected != null)
+            {
+                Assert.AreEqual(result.val, expected.val);
+                result = result.next;
+                expected = expected.next;
+            }
+
+            ListNode head2 = new ListNode(1);
+            var result2 = swap_nodes_in_pairs.SwapPairs(head2);
+            var expected2 = new ListNode(1);
+            while (result2 != null && expected2 != null)
+            {
+                Assert.AreEqual(result2.val, expected2.val);
+                result2 = result2.next;
+                expected2 = expected2.next;
+            }
+        }
+
+
 
     }
 

@@ -19,13 +19,11 @@ namespace leetcode
             }
 
             var mergedLists = new List<ListNode>();
-
             // 將兩個鏈表合併，然後將結果放入 mergedLists 中
             // 這樣可以減少合併的次數，從 O(k^2) 降低到 O(k log k)
             for (var i = 0; i < lists.Count(); i = i + 2)
             {
                 // 如果還有兩個鏈表可以合併
-
                 // 合併兩個鏈表
                 // 將合併的結果放入 mergedLists 中
                 // 這樣可以減少合併的次數，從 O(k^2) 降低到 O(k log k)
@@ -39,7 +37,6 @@ namespace leetcode
                     mergedLists.Add(lists[i]);
                 }
             }
-
             return MergeKLists(mergedLists.ToArray());
         }
 
