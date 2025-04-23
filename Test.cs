@@ -509,6 +509,25 @@ namespace leetcode
             }
         }
 
+        [Test]
+        public void TestRemoveDuplicates()
+        {
+            int[] nums = { 1, 1, 2 };
+            var result = RemoveDuplicates.removeDuplicates(nums);
+            Assert.AreEqual(2, result);
+            Assert.AreEqual(1, nums[0]);
+            Assert.AreEqual(2, nums[1]);
+
+            int[] nums2 = { 0, 0, 1, 1, 1, 2, 2, 3, 4 };
+            var result2 = RemoveDuplicates.removeDuplicates(nums2);
+            Assert.AreEqual(5, result2);
+            Assert.AreEqual(0, nums2[0]);
+            Assert.AreEqual(1, nums2[1]);
+            Assert.AreEqual(2, nums2[2]);
+            Assert.AreEqual(3, nums2[3]);
+            Assert.AreEqual(4, nums2[4]);
+        }
+
 
 
     }
