@@ -528,7 +528,45 @@ namespace leetcode
             Assert.AreEqual(4, nums2[4]);
         }
 
+        [Test]
+        public void TestRemoveElement()
+        {
+            int[] nums = { 3, 2, 2, 3 };
+            int val = 3;
+            var result = RemoveElement.removeElement(nums, val);
+            Assert.AreEqual(2, result);
+            Assert.AreEqual(2, nums[0]);
+            Assert.AreEqual(2, nums[1]);
 
+            int[] nums2 = { 0, 1, 2, 2, 3, 0, 4, 2 };
+            int val2 = 2;
+            var result2 = RemoveElement.removeElement(nums2, val2);
+            Assert.AreEqual(5, result2);
+            Assert.AreEqual(0, nums2[0]);
+            Assert.AreEqual(1, nums2[1]);
+            Assert.AreEqual(3, nums2[2]);
+            Assert.AreEqual(0, nums2[3]);
+            Assert.AreEqual(4, nums2[4]);
+        }
+
+        [Test]
+        public void TestFindIndex()
+        {
+            string haystack = "hello";
+            string needle = "ll";
+            var result = FindIndex.findIndex(haystack, needle);
+            Assert.AreEqual(2, result);
+
+            string haystack2 = "aaaaa";
+            string needle2 = "bba";
+            var result2 = FindIndex.findIndex(haystack2, needle2);
+            Assert.AreEqual(-1, result2);
+
+            string haystack3 = "";
+            string needle3 = "";
+            var result3 = FindIndex.findIndex(haystack3, needle3);
+            Assert.AreEqual(0, result3);
+        }
 
     }
 

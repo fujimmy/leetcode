@@ -13,8 +13,7 @@ namespace leetcode
             var second = head.next;
 
             first.next = SwapPairs(second.next);// 遞歸調用，將第二個節點的下一個節點傳入
-            second.next = first;
-
+            second.next = first;           
             return second;
         }
     }
