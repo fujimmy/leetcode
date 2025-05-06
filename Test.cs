@@ -568,6 +568,24 @@ namespace leetcode
             Assert.AreEqual(0, result3);
         }
 
+        [Test]
+        public void TestDivide()
+        {
+            int dividend = 10;
+            int divisor = 3;
+            var result = dividetwoint.Divide(dividend, divisor);
+            Assert.AreEqual(3, result);
+
+            int dividend2 = 7;
+            int divisor2 = -3;
+            var result2 = dividetwoint.Divide(dividend2, divisor2);
+            Assert.AreEqual(-2, result2);
+
+            int dividend3 = -2147483648;
+            int divisor3 = -1;
+            var result3 = dividetwoint.Divide(dividend3, divisor3);
+            Assert.AreEqual(int.MaxValue, result3);
+        }
     }
 
 
